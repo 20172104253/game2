@@ -12,6 +12,7 @@ class CCreature
 protected:
 	int nPower; //代表攻击力
 	int nLifeValue; //代表生命值
+	string name;
 public:
 	void display()
 	{
@@ -21,6 +22,7 @@ public:
 	{
 		nPower = p;
 		nLifeValue = l;
+		name = name;
 	}
 	void Hurted(int nPower)
 	{
@@ -30,6 +32,7 @@ public:
 	void Attack(CCreature * pobj)//基类指针可以指向派生类对象
 	{
 		//．．．表现攻击动作的代码
+		cout << name << "攻击" << endl;
 		pobj->Hurted(nPower);
 		pobj->FightBack(this);
 	}
@@ -37,6 +40,7 @@ public:
 	void FightBack(CCreature * pobj)
 	{
 		//．．．．表现反击动作的代码
+		cout << name << "反击" << endl;
 		pobj->Hurted(nPower / 2);
 	}
 
@@ -61,11 +65,11 @@ public:
 int main()
 {
 	CDragon oDragon;
-	oDragon.setvalue(20, 100);
+	oDragon.setvalue("龙",20, 100);
 	CWolf oWolf;
-	oWolf.setvalue(4, 100);
+	oWolf.setvalue("狼",4, 100);
 	CGhost oGhost;
-	oGhost.setvalue(10, 100);
+	oGhost.setvalue("幽灵",10, 100);
 	oDragon.display();
 	oWolf.display();
 	oGhost.display();
